@@ -1,0 +1,74 @@
+:root {
+    --ih-navy: #0b2545;
+    --ih-blue: #134a8a;
+    --ih-accent: #ff7a3d;
+    --ih-teal: #1a8c7a;
+    --ih-bg: #f5f7fa;
+}
+
+body {
+    background-color: var(--ih-bg);
+    font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.ih-navbar {
+    background: linear-gradient(90deg, var(--ih-navy) 0%, var(--ih-blue) 100%);
+}
+
+.ih-guest-body {
+    background: linear-gradient(180deg, #eef2f8 0%, #ffffff 240px);
+}
+
+.ih-hero {
+    background: radial-gradient(circle at top right, #16345f 0%, var(--ih-navy) 60%, #081b34 100%);
+    color: #fff;
+    padding: 90px 0 110px;
+}
+
+.ih-hero h1 { font-weight: 700; }
+
+.btn-accent {
+    background-color: var(--ih-accent);
+    border-color: var(--ih-accent);
+    color: #fff;
+}
+.btn-accent:hover { background-color: #e8672f; border-color: #e8672f; color: #fff; }
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(11, 37, 69, 0.06);
+}
+
+.card-stat {
+    border-left: 4px solid var(--ih-blue);
+}
+.card-stat.accent { border-left-color: var(--ih-accent); }
+.card-stat.teal { border-left-color: var(--ih-teal); }
+
+.stat-value { font-size: 1.9rem; font-weight: 700; color: var(--ih-navy); }
+.stat-label { color: #6b7688; font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; }
+
+.badge-status-pending { background-color: #ffe8cf; color: #a15c00; }
+.badge-status-approved, .badge-status-completed { background-color: #d7f2e3; color: #146c43; }
+.badge-status-rejected { background-color: #fbdcdc; color: #b02a37; }
+.badge-status-under_review, .badge-status-shortlisted { background-color: #dbe7fb; color: #134a8a; }
+.badge-status-withdrawn { background-color: #e9ecef; color: #495057; }
+.badge-status-needs_revision { background-color: #fff3cd; color: #856404; }
+
+.internship-card { transition: transform .15s ease, box-shadow .15s ease; }
+.internship-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(11,37,69,.12); }
+
+.section-title { color: var(--ih-navy); font-weight: 700; }
+
+.sidebar-nav .list-group-item.active {
+    background-color: var(--ih-blue);
+    border-color: var(--ih-blue);
+}
+
+.avatar-circle {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--ih-blue); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600;
+}
