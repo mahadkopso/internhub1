@@ -11,6 +11,7 @@ use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StudentProfileController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/run-migrations', function () {
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+        $output = Artisan::output();
+        return response("<pre style='padding:20px;background:#1e1e1e;color:#00ff88;font-family:monospace;border-radius:8px;'>Migrations ran successfully!\n\n" . htmlspecialchars($output) . "</pre>");
+    } catch (\Throwable $e) {
+        return response("<pre style='padding:20px;background:#1e1e1e;color:#ff5555;font-family:monospace;border-radius:8px;'>Migration Error:\n\n" . htmlspecialchars($e->getMessage()) . "</pre>", 500);
+    }
+});
+
+Route::get('/run-seeders', function () {
+    try {
+        Artisan::call('db:seed', ['--force' => true]);
+        $output = Artisan::output();
+        return response("<pre style='padding:20px;background:#1e1e1e;color:#00ff88;font-family:monospace;border-radius:8px;'>Seeders ran successfully!\n\n" . htmlspecialchars($output) . "</pre>");
+    } catch (\Throwable $e) {
+        return response("<pre style='padding:20px;background:#1e1e1e;color:#ff5555;font-family:monospace;border-radius:8px;'>Seeder Error:\n\n" . htmlspecialchars($e->getMessage()) . "</pre>", 500);
+    }
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
